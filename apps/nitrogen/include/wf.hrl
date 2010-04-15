@@ -115,6 +115,7 @@
 -record(wizard, {?ELEMENT_BASE(element_wizard), tag, titles, steps }).
 -record(upload, {?ELEMENT_BASE(element_upload), delegate, tag, show_button=true, button_text="Upload" }).
 -record(sparkline, {?ELEMENT_BASE(element_sparkline), type, values, options }).
+-record(ext_link, {?ELEMENT_BASE(element_ext_link), url, type, rel, title}).
 
 %% 960.gs Grid
 -record(grid,  {?ELEMENT_BASE(element_grid), type, columns,  alpha, omega, push, pull, prefix, suffix, body}).
@@ -148,6 +149,7 @@
 -record(comet, {?ACTION_BASE(action_comet), pool=undefined, scope=local, function, dying_message}).
 -record(continue, {?ACTION_BASE(action_continue), function, delegate, tag, timeout}).
 -record(api, {?ACTION_BASE(action_api), name, tag, delegate }).
+-record(js_call, {?ACTION_BASE(action_js_call), fname, args = []}).
 -record(function, {?ACTION_BASE(action_function), function }).
 -record(set, {?ACTION_BASE(action_set), value}).
 -record(redirect, {?ACTION_BASE(action_redirect), url}).
