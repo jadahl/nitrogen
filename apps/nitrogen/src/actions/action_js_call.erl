@@ -20,7 +20,7 @@ escape_arg(Arg) ->
         {str, Arg2} ->
             ["\"" ++ Arg2 ++ "\""];
         {raw, Arg3} ->
-            Arg3
+            [Arg3]
     end.
 
 escape_arg1(Arg) when is_tuple(Arg) ->
@@ -34,6 +34,8 @@ escape_arg1([C | _Cs] = Arg) when is_integer(C) ->
     {str, Arg};
 escape_arg1(Arg) when is_list(Arg) ->
     {raw, "[" ++ lists:join(lists:flatmap(fun escape_arg/1, Arg), ", ") ++ "]"};
+escape_arg1(undefined) ->
+    {raw, "undefined"};
 escape_arg1(Arg) when is_atom(Arg) ->
     {str, wf_render_actions:normalize_path(Arg)};
 escape_arg1(_) ->
